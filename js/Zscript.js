@@ -6,7 +6,7 @@
 jQuery(window).load(function ($) {
     "use strict";
     
-	$('#loader').fadeOut();
+	jQuery('#loader').fadeOut();
 });
 
 jQuery(document).ready(function ($) {
