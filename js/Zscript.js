@@ -3,13 +3,13 @@
 
 
 // Page Loader
-$(window).load(function () {
+jQuery(window).load(function ($) {
     "use strict";
     
 	$('#loader').fadeOut();
 });
 
-$(document).ready(function ($) {
+jQuery(document).ready(function ($) {
 	"use strict";
 	
 	
