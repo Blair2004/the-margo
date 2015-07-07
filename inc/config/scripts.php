@@ -3,6 +3,7 @@
 $js_dir	=	opendir( get_template_directory() . '/js' );
 while( FALSE !== ( $file = readdir( $js_dir ) ) )
 {
+	wp_enqueue_script( 'jquery' );
 	if( substr( $file , -2 ) == 'js' )
 	{
 		wp_enqueue_script( 'the-margo-' . $file , get_template_directory_uri() . '/js/' . $file , array(), '20120206', true );
