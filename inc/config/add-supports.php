@@ -18,11 +18,11 @@ add_theme_support( 'html5', array(
  * See http://codex.wordpress.org/Post_Formats
  */
 add_theme_support( 'post-formats', array(
-	'aside',
+	//'aside',
 	'image',
 	'video',
 	'quote',
-	'link',
+	//'link',
 ) );
 
 // Set up the WordPress core custom background feature.

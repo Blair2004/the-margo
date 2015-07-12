@@ -79,6 +79,18 @@
 					{
 						$comment_string = sprintf( __( '%s Comments' , 'the-margo' ) , $comments );
 					}
+					
+					$fa_icon	=	'fa-picture-o';
+					$current_post_format	=	get_post_format( get_the_ID() );
+					switch( $current_post_format )
+					{
+						default 			: 	$fa_icon	=	'newspaper-o'; break;
+						case 'quote' 	: 	$fa_icon	=	'quote-left'; break;
+						case 'image'	:	$fa_icon	=	'image'; break;
+						case 'gallery'	:	$fa_icon = 	'image'; break;
+						case 'video'	:	$fa_icon	=  'file-video-o'; break;
+					}
+					$fa_icon		=	'fa-' . $fa_icon;
 					?>
                 <!-- Start Post -->
                 <div class="blog-post image-post">
@@ -98,7 +110,8 @@
                  <?php endif;?>
                  <!-- Post Content -->
                  <div class="post-content">
-                     <div class="post-type"><i class="fa fa-picture-o"></i></div>
+                     <div class="post-type">
+                     <i class="fa <?php echo $fa_icon;?>"></i></div>
                      <h2><a href="<?php the_permalink();?>"><?php the_title();?></a></h2>
                      <ul class="post-meta">
                          <li><?php _e( 'By' , 'the-margo' );?> <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><?php the_author();?></a></li>
