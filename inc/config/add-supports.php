@@ -54,3 +54,4 @@ add_theme_support( 'post-thumbnails' );
 **/
 
 add_image_size( 'blog-posts', 848, 477, true ); // (cropped)
+add_image_size( 'widget-thumb', 65, 65, true ); // (cropped)
