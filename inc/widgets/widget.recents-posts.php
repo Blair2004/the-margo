@@ -4,14 +4,15 @@ class margo_recents_posts_widget extends WP_Widget
 	function __construct()
 	{
 		parent::__construct( 'widget-popular-posts' , __( 'Margo WordPress Posts' , 'the-margo' ) , array(
-			'description'	=>	__( 'Displays Posts in your sidebar' )
+			'description'	=>	__( 'Displays Posts in your sidebar' ),
+			'classname'		=>	'widget-popular-posts'
 		) );
 	}
 	
 	function widget( $args , $instance )
 	{
 		$title	=	apply_filters( 'widget_tilte' , $instance[ 'title' ] );		
-		$args[ 'before_widget' ]	=	str_replace( 'widget_widget-popular-posts' , 'widget-popular-posts' , $args[ 'before_widget' ] );
+		// $args[ 'before_widget' ]	=	str_replace( 'widget_widget-popular-posts' , 'widget-popular-posts' , $args[ 'before_widget' ] );
 
 	
 		echo $args[ 'before_widget' ];
@@ -71,14 +72,109 @@ class margo_recents_posts_widget extends WP_Widget
 		}
 		else if( $instance[ 'order' ] === 'recents' )
 		{
-			 global $post;
-			 $myposts = get_posts('numberposts=5&offset=1&tag=tagslug,tagslug2');
-			 foreach($myposts as $post) :
-			setup_postdata($post);
-	 		?>
-    		<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
- 			<?php 
-			endforeach; 
+			$popular = new WP_Query('orderby=date&posts_per_page=' . $instance[ 'number' ] . '&order=DESC' );
+			if( $popular->have_posts() )
+			{
+            echo '<ul>';
+				while( $popular->have_posts() ): $popular->the_post();
+					$widget_thumb = wp_get_attachment_image_src( get_post_thumbnail_id( $popular->ID ), 'widget-thumb' );
+					// var_dump( $widget_thumb );
+					?>
+               <li>
+               <?php
+					if( $widget_thumb ): // if thumb exists
+						// if well sized thumb exists
+						if( $widget_thumb[3] === true )
+						{
+						?>
+                  <div class="widget-thumb">
+                     <a href="<?php the_title();?>"><img src="<?php echo $widget_thumb[0];?>" alt="<?php the_title();?>"></a>
+                  </div>
+						<?php						
+						}
+						else
+						{
+						?>
+                  <div class="widget-thumb">
+                     <a href="<?php the_title();?>"><img src="<?php echo $widget_thumb[0];?>" alt="<?php the_title();?>"></a>
+                  </div>
+						<?php
+						}
+					endif;
+					?>
+                  <div class="widget-content">
+                     <h5><a href="<?php the_permalink();?>"><?php the_title();?></a></h5>
+                     <?php
+							if( isset( $instance[ 'showdate' ] ) )
+							{
+								if( $instance[ 'showdate' ] === 'yes' )
+								{
+							?>
+                     <span><?php the_date();?></span>
+                     <?php
+								}
+							}
+							?>
+                  </div>
+                  <div class="clearfix"></div>
+               </li>         
+               <?php
+				endwhile;
+				echo '</ul>';
+			}
+		}
+		else if( $instance[ 'order' ] === 'old_ones' )
+		{
+			$popular = new WP_Query('orderby=date&posts_per_page=' . $instance[ 'number' ] . '&order=ASC' );
+			if( $popular->have_posts() )
+			{
+            echo '<ul>';
+				while( $popular->have_posts() ): $popular->the_post();
+					$widget_thumb = wp_get_attachment_image_src( get_post_thumbnail_id( $popular->ID ), 'widget-thumb' );
+					// var_dump( $widget_thumb );
+					?>
+               <li>
+               <?php
+					if( $widget_thumb ): // if thumb exists
+						// if well sized thumb exists
+						if( $widget_thumb[3] === true )
+						{
+						?>
+                  <div class="widget-thumb">
+                     <a href="<?php the_title();?>"><img src="<?php echo $widget_thumb[0];?>" alt="<?php the_title();?>"></a>
+                  </div>
+						<?php						
+						}
+						else
+						{
+						?>
+                  <div class="widget-thumb">
+                     <a href="<?php the_title();?>"><img src="<?php echo $widget_thumb[0];?>" alt="<?php the_title();?>"></a>
+                  </div>
+						<?php
+						}
+					endif;
+					?>
+                  <div class="widget-content">
+                     <h5><a href="<?php the_permalink();?>"><?php the_title();?></a></h5>
+                     <?php
+							if( isset( $instance[ 'showdate' ] ) )
+							{
+								if( $instance[ 'showdate' ] === 'yes' )
+								{
+							?>
+                     <span><?php the_date();?></span>
+                     <?php
+								}
+							}
+							?>
+                  </div>
+                  <div class="clearfix"></div>
+               </li>         
+               <?php
+				endwhile;
+				echo '</ul>';
+			}
 		}
 		echo $args[ 'after_widget' ];
 	}
@@ -106,9 +202,9 @@ class margo_recents_posts_widget extends WP_Widget
       </label>
       <br />
       <select name="<?php echo $this->get_field_name( 'order' );?>">
-      	<option <?php echo $order == 'recents' ? 'selected="selected"' : '';?> value="recents"><?php _e( 'Most recents' , 'the-margo' );?></option>
+      	<option <?php echo $order == 'recents' ? 'selected="selected"' : '';?> value="recents"><?php _e( 'Most Recents' , 'the-margo' );?></option>
          <option <?php echo $order == 'most_commented' ? 'selected="selected"' : '';?> value="most_commented"><?php _e( 'Most Commented' , 'the-margo' );?></option>
-         <option <?php echo $order == 'old_ones' ? 'selected="selected"' : '';?> value="old_ones"><?php _e( 'Old One' , 'the-margo' );?></option>
+         <option <?php echo $order == 'old_ones' ? 'selected="selected"' : '';?> value="old_ones"><?php _e( 'Old Ones' , 'the-margo' );?></option>
       </select>
       <br />
       <br />

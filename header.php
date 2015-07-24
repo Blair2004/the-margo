@@ -6,6 +6,29 @@
  *
  * @package the margo
  */
+ 
+ $panel_settings		=	get_option( 'the_margo_layout' );
+ if( is_home() ):
+ 	
+	$panel_settings[ 'blog_layout' ] = isset( $panel_settings[ 'blog_layout' ] ) ? $panel_settings[ 'blog_layout' ] : 'full_width';
+	$panel_settings[ 'blog_pattern' ] = isset( $panel_settings[ 'blog_pattern' ] ) ? $panel_settings[ 'blog_pattern' ] : 'brown_wood';
+	
+	$container_class		=	( $panel_settings[ 'blog_layout' ] == 'boxed' ) ? 'boxed-page' : '';
+	$background_pattern	=	the_margo_background_pattern( $panel_settings[ 'blog_pattern' ] );
+ 
+ elseif( is_single() ):
+	
+	$panel_settings[ 'blog_layout' ] = isset( $panel_settings[ 'blog_layout' ] ) ? $panel_settings[ 'blog_layout' ] : 'full_width';
+	$panel_settings[ 'blog_pattern' ] = isset( $panel_settings[ 'blog_pattern' ] ) ? $panel_settings[ 'blog_pattern' ] : 'brown_wood';
+	
+	$container_class		=	( $panel_settings[ 'blog_layout' ] == 'boxed' ) ? 'boxed-page' : '';
+	$background_pattern	=	the_margo_background_pattern( $panel_settings[ 'blog_pattern' ] );
+ 
+ else:
+ 	
+	$background_pattern	=	the_margo_background_pattern( 'brown_wood' );
+	$container_class		=	'';
+ endif;
 
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -16,10 +39,15 @@
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 
 <?php wp_head(); ?>
+<style>
+body {
+  background: url(<?php echo $background_pattern;?>) fixed repeat;
+}
+</style>
 </head>
 
 <body <?php // body_class(); ?>>
-	<div id="container">
+	<div id="container" class="<?php echo $container_class;?>">
     	<!-- Start Header Section --> 
         <div class="hidden-header"></div>
         <header class="clearfix" <?php if( is_user_logged_in() ):?> style="top:32px;"<?php endif;?>>

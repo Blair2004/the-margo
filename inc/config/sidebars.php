@@ -67,6 +67,19 @@ register_sidebar( array(
 ) );
 
 // Unregister default widgets
-register_widget( 'margo_recents_posts_widget' );
+unregister_widget( 'WP_Widget_Recent_Posts' );
+unregister_widget( 'WP_Widget_Categories' );
+unregister_widget( 'WP_Widget_Pages' );
+unregister_widget( 'WP_Widget_Calendar' );
+unregister_widget( 'WP_Widget_Search' );
+unregister_widget( 'WP_Widget_Recent_Comments' );
+unregister_widget( 'WP_Widget_Meta' );
 
 // Register Widgets
+register_widget( 'margo_recents_posts_widget' );
+register_widget( 'margo_categories_widget' );
+register_widget( 'margo_pages_widget' );
+register_widget( 'margo_search_widget' );
+register_widget( 'margo_calendar_widget' );
+register_widget( 'margo_comments_widget' );
+register_widget( 'margo_meta_widget' );

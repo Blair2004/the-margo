@@ -69,9 +69,16 @@ require get_template_directory() . '/inc/menu-walker.php';
 
 require get_template_directory() . '/inc/comment-walker.php';
 
+// include fiters
+
+require get_template_directory() . '/inc/filters/filters.php';
+
 // Include Widget Classes
 
 require get_template_directory() . '/inc/widgets/widget.calendar.php';
 require get_template_directory() . '/inc/widgets/widget.recents-posts.php';
-
-
+require get_template_directory() . '/inc/widgets/widget.categories.php';
+require get_template_directory() . '/inc/widgets/widget.pages.php';
+require get_template_directory() . '/inc/widgets/widget.search.php';
+require get_template_directory() . '/inc/widgets/widget.comments.php';
+require get_template_directory() . '/inc/widgets/widget.meta.php';

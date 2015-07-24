@@ -4096,11 +4096,11 @@ ul.post-meta li, ul.post-meta li a {
     -o-transition: all 0.2s ease-in-out;
 }
 
-.sidebar .widget-popular-posts .widget-thumb:hover img {
+.sidebar .widget-popular-posts .widget-thumb:hover img{
 	opacity: 0.7;
 }
 
-.sidebar .widget-popular-posts .widget-content h5 {
+.sidebar .widget-popular-posts .widget-content h5{
 	font-size: 13px;
 	line-height: 19px;
 	margin-bottom: 5px;
@@ -4185,6 +4185,114 @@ footer a:hover {
 	height: 3px;
 	background-color: #333;
 	margin: 0;
+}
+
+.footer-widgets .widget h4 {
+	text-transform: uppercase;
+	padding-bottom: 8px;
+    margin-bottom: 16px;
+	font-size: 14px;
+	font-weight: 500;
+	position: relative;
+}
+
+.footer-widgets .widget h4 .head-line {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	display: block;
+	width: 50px;
+	height: 2px;
+	background-color: #ddd;
+	margin: 0;
+}
+
+.widget-categories ul li a {
+	padding: 8px 0;
+    text-decoration: none;
+    display: block;
+	border-bottom: 1px solid #eee;
+    transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+}
+
+.footer-widgets .widget-categories ul li a {
+		border-bottom: 1px solid #333;
+}
+
+.widget-categories ul li:first-child a {
+	padding-top: 0;
+}
+
+.widget-categories ul li a:hover {
+	padding-left: 8px;
+}
+
+.footer-widgets .widget-popular-posts li {
+	margin-bottom: 12px;
+	padding-bottom: 12px;
+	border-bottom: 1px solid #333;
+}
+
+.footer-widgets .widget-popular-posts li:last-child {
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+
+.footer-widgets .widget-popular-posts .widget-thumb {
+	float: left;
+	margin-right: 8px;
+	border: 3px solid #eee;
+	border-radius: 2px;
+	-webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -o-border-radius: 2px;
+}
+
+.footer-widgets .widget-popular-posts .widget-thumb img {
+	width: 65px;
+	height: 65px;
+	opacity: 1;
+	transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+}
+
+.footer-widgets .widget-popular-posts .widget-thumb:hover img {
+	opacity: 0.7;
+}
+
+.footer-widgets .widget-popular-posts .widget-content h5 {
+	font-size: 13px;
+	line-height: 19px;
+	margin-bottom: 5px;
+	font-weight: 300;
+}
+
+.footer-widgets .widget-popular-posts .widget-content span {
+	color: #bbb;
+	font-size: 12px;
+}
+
+.footer-widgets .tagcloud a {
+    display: inline-block;
+    color: #666;
+    font-size: 12px;
+    padding: 4px 10px;
+    background: #eee;
+	margin-bottom: 4px;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -o-border-radius: 2px;
+    transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
 }
 
 .social-widget ul.social-icons li {
