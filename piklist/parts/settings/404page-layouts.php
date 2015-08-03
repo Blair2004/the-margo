@@ -2,12 +2,13 @@
 /*
 Title: Pages Layout
 Setting: the_margo_layout
+Tab: 404 Page
 */
 
 
 piklist( 'field' , array(
 	'type'				=>	'select',
-	'field'				=>	'page_sidebar',
+	'field'				=>	'404page_sidebar',
 	'label'				=>	__( 'Displays Sidebar' , 'the-margo' ),
 	'description'		=>	__( 'This setting can be overrided on each pages.' , 'the-margo' ),
 	'help'				=>	__( 'Default setting for pages is set to "sidebar left"' , 'the-margo' ),
@@ -20,7 +21,7 @@ piklist( 'field' , array(
 
 piklist( 'field' , array(
 	'type'				=>	'select',
-	'field'				=>	'page_layout',
+	'field'				=>	'404page_layout',
 	'label'				=>	__( 'Layout for pages' , 'the-margo' ),
 	'description'		=>	__( 'This setting can be overrided on each pages.' , 'the-margo' ),
 	'help'				=>	__( 'Default setting for pages is set to "full width"' , 'the-margo' ),
@@ -32,7 +33,7 @@ piklist( 'field' , array(
 
 piklist( 'field' , array(
 	'type'				=>	'radio',
-	'field'				=>	'page_pattern',
+	'field'				=>	'404page_pattern',
 	'label'				=>	__( 'Background Pattern' , 'the-margo' ),
 	'description'		=>	__( 'This setting can be overrided on each pages.' , 'the-margo' ),
 	'help'				=>	__( 'Default setting for pages is set to "full width"' , 'the-margo' ),

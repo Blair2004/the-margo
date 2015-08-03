@@ -10,10 +10,18 @@
  *
  * @package the margo
  */
+ get_header();
+ 
+ global 
+ 	$the_margo_show_footer, 
+	$the_margo_show_top_bar, 
+	$the_margo_show_banner, 
+	$the_margo_bkg_pattern, 
+	$the_margo_sidebar,
+	$the_margo_container_class;
+		
 ?>
-
-<?php get_header(); ?>
-
+<?php if( $the_margo_show_banner ): // show page banner?>
 <div class="page-banner">
     <div class="container">
         <div class="row">
@@ -22,33 +30,26 @@
                 <p>Blog Page With Right Sidebar</p>
             </div>
             <div class="col-md-6">
-                <ul class="breadcrumbs">
-                    <li><a href="#">Home</a></li>
-                    <li>Blog</li>
-                </ul>
+                <?php echo the_margo_breadcrumbs();?>
             </div>
         </div>
     </div>
 </div>
+<?php endif;?>
 
 <div id="content">
     <div class="container">
         <div class="row blog-page">
-				<?php
-				$panel_settings		=	get_option( 'the_margo_layout' );
-				// var_dump( $panel_settings );
-				$panel_settings[ 'blog_sidebar' ]	=	isset( $panel_settings[ 'blog_sidebar' ] ) ? $panel_settings[ 'blog_sidebar' ] : 'sidebar_left';
-				?>
 				
-				<?php if( $panel_settings[ 'blog_sidebar' ] == 'sidebar_left' ): // left sidebar?>
+				<?php if( $the_margo_sidebar == 'sidebar_left' ): // left sidebar?>
             
 				<?php get_template_part( 'blog' , 'sidebar-left' );?>
             
-            <?php elseif( $panel_settings[ 'blog_sidebar' ] == 'sidebar_right' ): // sidebar right;?>
+            <?php elseif( $the_margo_sidebar == 'sidebar_right' ): // sidebar right;?>
             
             <?php get_template_part( 'blog' , 'sidebar-right' );?>
             
-            <?php elseif( $panel_settings[ 'blog_sidebar' ] == 'no_sidebar' ): // no sidebar?>
+            <?php elseif( $the_margo_sidebar == 'no_sidebar' ): // no sidebar?>
             
             <?php get_template_part( 'blog' , 'no-sidebar' );?>
             

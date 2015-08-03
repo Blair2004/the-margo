@@ -22,10 +22,7 @@
                 <p>Blog Page With Right Sidebar</p>
             </div>
             <div class="col-md-6">
-                <ul class="breadcrumbs">
-                    <li><a href="#">Home</a></li>
-                    <li>Blog</li>
-                </ul>
+                <?php echo the_margo_breadcrumbs();?>
             </div>
         </div>
     </div>

@@ -11,6 +11,12 @@ class margo_recents_posts_widget extends WP_Widget
 	
 	function widget( $args , $instance )
 	{
+		// fill all
+		$instance[ 'title' ] 		= isset( $instance[ 'title' ] ) ? $instance[ 'title' ] : __( 'Recent Posts' , 'the-margo' );
+		$instance[ 'showdate' ] 	= isset( $instance[ 'showdate' ] ) ? $instance[ 'showdate' ] : 'yes';
+		$instance[ 'order' ] 		= isset( $instance[ 'order' ] ) ? $instance[ 'order' ] : 'most_commented';
+		$instance[ 'number' ] 		= isset( $instance[ 'number' ] ) ? $instance[ 'number' ] : 5;
+		
 		$title	=	apply_filters( 'widget_tilte' , $instance[ 'title' ] );		
 		// $args[ 'before_widget' ]	=	str_replace( 'widget_widget-popular-posts' , 'widget-popular-posts' , $args[ 'before_widget' ] );
 
@@ -19,7 +25,7 @@ class margo_recents_posts_widget extends WP_Widget
 		echo ! empty( $title ) ? $args[ 'before_title' ] . $title . $args[ 'after_title' ] : '';
 		if( $instance[ 'order' ] === 'most_commented' )
 		{
-			$popular = new WP_Query('orderby=comment_count&posts_per_page=' . $instance[ 'number' ] );
+			$popular = new WP_Query( 'orderby=comment_count&posts_per_page=' . $instance[ 'number' ] );
 			if( $popular->have_posts() )
 			{
             echo '<ul>';

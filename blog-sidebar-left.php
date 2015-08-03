@@ -1,9 +1,3 @@
-            <!--Sidebar-->
-            <div class="col-md-3 sidebar left-sidebar">
-                <!-- Search Widget -->
-                <?php dynamic_sidebar( 'left-sidebar' ); ?>
-            </div>
-            <!--End sidebar-->
             <!-- Start Blog Posts -->
             <div class="col-md-9 blog-box">            
             	<?php
@@ -90,3 +84,9 @@
              <!-- End Pagination -->
             </div>
             <!-- End Blog Posts -->
+            <!--Sidebar-->
+            <div class="col-md-3 sidebar left-sidebar">
+                <!-- Search Widget -->
+                <?php dynamic_sidebar( 'left-sidebar' ); ?>
+            </div>
+            <!--End sidebar-->
