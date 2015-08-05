@@ -1,3 +1,4 @@
+<?php require get_template_directory() . '/inc/globals.php';?>
             <!-- Start Blog Posts -->
             <div class="col-md-12 blog-box">            
             	<?php

@@ -109,6 +109,6 @@
 <!--Sidebar-->
 <div class="col-md-3 sidebar left-sidebar">
     <!-- Search Widget -->
-    <?php dynamic_sidebar( 'left-sidebar' ); ?>
+    <?php dynamic_sidebar( $the_margo_left_sidebar ); ?>
 </div>
 <!--End sidebar-->

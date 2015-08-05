@@ -12,13 +12,7 @@
  */
  get_header();
  
- global 
- 	$the_margo_show_footer, 
-	$the_margo_show_top_bar, 
-	$the_margo_show_banner, 
-	$the_margo_bkg_pattern, 
-	$the_margo_sidebar,
-	$the_margo_container_class;
+ require get_template_directory() . '/inc/globals.php';
 		
 ?>
 <?php if( $the_margo_show_banner ): // show page banner?>
@@ -43,15 +37,15 @@
 				
 				<?php if( $the_margo_sidebar == 'sidebar_left' ): // left sidebar?>
             
-				<?php get_template_part( 'blog' , 'sidebar-left' );?>
+				<?php get_template_part( 'page' , 'sidebar-left' );?>
             
             <?php elseif( $the_margo_sidebar == 'sidebar_right' ): // sidebar right;?>
             
-            <?php get_template_part( 'blog' , 'sidebar-right' );?>
+            <?php get_template_part( 'page' , 'sidebar-right' );?>
             
             <?php elseif( $the_margo_sidebar == 'no_sidebar' ): // no sidebar?>
             
-            <?php get_template_part( 'blog' , 'no-sidebar' );?>
+            <?php get_template_part( 'page' , 'no-sidebar' );?>
             
             <?php endif;    ?>
         </div>

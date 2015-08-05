@@ -7,13 +7,7 @@
  * @package the margo
  */
  
- global 
- 	$the_margo_show_footer, 
-	$the_margo_show_top_bar, 
-	$the_margo_show_banner, 
-	$the_margo_bkg_pattern, 
-	$the_margo_sidebar,
-	$the_margo_container_class;
+ require get_template_directory() . '/inc/globals.php';
 
 if( $the_margo_show_footer )
 {

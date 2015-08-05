@@ -1,3 +1,4 @@
+<?php require get_template_directory() . '/inc/globals.php'; ?>
 <div class="col-md-9 blog-box">
    
    <?php
@@ -109,6 +110,6 @@
 <!--Sidebar-->
 <div class="col-md-3 sidebar left-sidebar">
     <!-- Search Widget -->
-    <?php dynamic_sidebar( 'right-sidebar' ); ?>
+    <?php dynamic_sidebar( $the_margo_right_sidebar ); ?>
 </div>
 <!--End sidebar-->

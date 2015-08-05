@@ -6,103 +6,10 @@
  *
  * @package the margo
  */
- global 
- 	$the_margo_show_footer, 
-	$the_margo_show_top_bar, 
-	$the_margo_show_banner, 
-	$the_margo_bkg_pattern, 
-	$the_margo_sidebar,
-	$the_margo_container_class;
  
- $panel_settings		=	get_option( 'the_margo_layout' );
- if( is_home() || $is_single	=	is_single() ):
- 	
-	$panel_settings[ 'blog_layout' ] 				= isset( $panel_settings[ 'blog_layout' ] ) 				? $panel_settings[ 'blog_layout' ] : 'full_width';
-	$panel_settings[ 'blog_pattern' ] 				= isset( $panel_settings[ 'blog_pattern' ] ) 			? $panel_settings[ 'blog_pattern' ] : 'brown_wood';
-	$panel_settings[ 'blog_show_topbar' ] 			= isset( $panel_settings[ 'blog_show_topbar' ] ) 		? $panel_settings[ 'blog_show_topbar' ] : 'yes';
-	$panel_settings[ 'blog_show_footer' ] 			= isset( $panel_settings[ 'blog_show_footer' ] ) 		? $panel_settings[ 'blog_show_footer' ] : 'yes';
-	$panel_settings[ 'blog_show_banner' ] 			= isset( $panel_settings[ 'blog_show_banner' ] ) 		? $panel_settings[ 'blog_show_banner' ] : 'yes';
-	$panel_settings[ 'blog_sidebar' ]				= isset( $panel_settings[ 'blog_sidebar' ] ) 			? $panel_settings[ 'blog_sidebar' ] : 'sidebar_left';
-	
-	// Saving general options
-	$the_margo_container_class		=	( $panel_settings[ 'blog_layout' ] == 'boxed' ) ? 'boxed-page' : '';
-	$the_margo_bkg_pattern			=	the_margo_background_pattern( $panel_settings[ 'blog_pattern' ] );	
-	$the_margo_show_top_bar			=	$panel_settings[ 'blog_show_topbar' ] === 'yes' ? true : false;
-	$the_margo_show_footer			=	$panel_settings[ 'blog_show_footer' ] === 'yes' ? true : false;
-	$the_margo_show_banner			=	$panel_settings[ 'blog_show_banner' ] ===  'yes' ? true : false;
-	$the_margo_sidebar				=	$panel_settings[ 'blog_sidebar' ];
-	
-	// Check if for single custom options has been saved
-	if( is_single() )
-	{
-		/**
-		 * Every blog settings are replaced if something has been changed from post/page editor
-		**/
-
-		global $post;
-		
-		$single_layout 				= 
-			( $single_layout			= get_post_meta( $post->ID, 'single_layout', true) ) != '' 	? $single_layout : $panel_settings[ 'blog_layout' ];
-
-		$single_pattern 				= 
-			( $single_pattern 		= get_post_meta( $post->ID, 'single_pattern', true) ) != '' 	? $single_pattern : $panel_settings[ 'blog_pattern' ];
-
-		$single_show_topbar 			= 
-			( $single_show_topbar 	= get_post_meta( $post->ID, 'single_show_topbar', true) ) != ''	? $single_show_topbar : $panel_settings[ 'blog_show_topbar' ];
-
-		$single_show_footer			= 
-			( $single_show_footer 	= get_post_meta( $post->ID, 'single_show_footer', true) ) != '' ? $single_show_footer  : $panel_settings[ 'blog_show_footer' ];
-			
-		$single_show_banner			= 
-			( $single_show_banner 	= get_post_meta( $post->ID, 'single_show_banner', true) ) != '' ? $single_show_banner : $panel_settings[ 'blog_show_banner' ];
-			
-		$single_sidebar				= 
-			( $single_sidebar 		= get_post_meta( $post->ID, 'single_sidebar', true) ) != ''	? $single_sidebar : $panel_settings[ 'blog_sidebar' ];
-		
-		// Saving general options
-		$the_margo_container_class		=	( $single_layout == 'boxed' ) ? 'boxed-page' : '';
-		$the_margo_bkg_pattern			=	the_margo_background_pattern( $single_pattern );
-		$the_margo_show_top_bar			=	$single_show_topbar === 'yes' ? true : false;
-		$the_margo_show_footer			=	$single_show_footer === 'yes' ? true : false;
-		$the_margo_show_banner			=	$single_show_banner ===  'yes' ? true : false;
-		$the_margo_sidebar				=	$single_sidebar;
-	};
-	
- elseif( is_404() ):
+ include get_template_directory() . '/inc/globals.php';
  
- 	$panel_settings[ '404page_layout' ] 				= isset( $panel_settings[ '404page_layout' ] ) 			? $panel_settings[ '404page_layout' ] 			: 'full_width';
-	$panel_settings[ '404page_pattern' ] 				= isset( $panel_settings[ '404page_pattern' ] ) 		? $panel_settings[ '404page_pattern' ] 		: 'brown_wood';
-	$panel_settings[ '404page_show_topbar' ] 			= isset( $panel_settings[ '404page_show_topbar' ] ) 	? $panel_settings[ '404page_show_topbar' ] 	: 'yes';
-	$panel_settings[ '404page_show_footer' ] 			= isset( $panel_settings[ '404page_show_footer' ] ) 	? $panel_settings[ '404page_show_footer' ] 	: 'yes';
-	$panel_settings[ '404page_show_banner' ] 			= isset( $panel_settings[ '404page_show_banner' ] ) 	? $panel_settings[ '404page_show_banner' ] 	: 'yes';
-	$panel_settings[ '404page_sidebar' ] 				= isset( $panel_settings[ '404page_sidebar' ] ) 		? $panel_settings[ '404page_sidebar' ] 		: 'yes';
-	
-	// Saving general options
-	$the_margo_container_class				=	( $panel_settings[ '404page_layout' ] == 'boxed' ) ? 'boxed-page' : '';	
-	$the_margo_bkg_pattern					=	the_margo_background_pattern( $panel_settings[ '404page_pattern' ] );
-	$the_margo_show_top_bar					=	$panel_settings[ '404page_show_topbar' ] === 'yes' ? true : false;
-	$the_margo_show_footer					=	$panel_settings[ '404page_show_footer' ] === 'yes' ? true : false;
-	$the_margo_show_banner					=	$panel_settings[ '404page_show_banner' ] ===  'yes' ? true : false;
-	$the_margo_sidebar						=	$panel_settings[ '404page_sidebar' ];
- 
- else: // page layout options
- 	
-	$panel_settings[ 'page_layout' ] 				= isset( $panel_settings[ 'page_layout' ] ) 			? $panel_settings[ 'page_layout' ] 			: 'full_width';
-	$panel_settings[ 'page_pattern' ] 				= isset( $panel_settings[ 'page_pattern' ] ) 		? $panel_settings[ 'page_pattern' ] 		: 'brown_wood';
-	$panel_settings[ 'page_show_topbar' ] 			= isset( $panel_settings[ 'page_show_topbar' ] ) 	? $panel_settings[ 'page_show_topbar' ] 	: 'yes';
-	$panel_settings[ 'page_show_footer' ] 			= isset( $panel_settings[ 'page_show_footer' ] ) 	? $panel_settings[ 'page_show_footer' ] 	: 'yes';
-	$panel_settings[ 'page_show_banner' ] 			= isset( $panel_settings[ 'page_show_banner' ] ) 	? $panel_settings[ 'page_show_banner' ] 	: 'yes';
-	$panel_settings[ 'page_sidebar' ] 				= isset( $panel_settings[ 'page_sidebar' ] ) 		? $panel_settings[ 'page_sidebar' ] 		: 'yes';
-	
-	// Saving general options
-	$the_margo_container_class							=	( $panel_settings[ 'page_layout' ] == 'boxed' ) ? 'boxed-page' : '';	
-	$the_margo_bkg_pattern						=	the_margo_background_pattern( $panel_settings[ 'page_pattern' ] );
-	$the_margo_show_top_bar					=	$panel_settings[ 'page_show_topbar' ] === 'yes' ? true : false;
-	$the_margo_show_footer					=	$panel_settings[ 'page_show_footer' ] === 'yes' ? true : false;
-	$the_margo_show_banner					=	$panel_settings[ 'page_show_banner' ] ===  'yes' ? true : false;
-	$the_margo_sidebar						=	$panel_settings[ 'page_sidebar' ];
-	
- endif;
+ include get_template_directory() . '/inc/options-vars.php';
 
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>

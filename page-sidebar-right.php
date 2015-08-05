@@ -1,4 +1,5 @@
-<?php require get_template_directory() . '/inc/globals.php';?>
+<?php require get_template_directory() . '/inc/globals.php'; ?>
+
             <!-- Start Blog Posts -->
             <div class="col-md-9 blog-box">            
             	<?php
@@ -45,35 +46,9 @@
 					$fa_icon		=	'fa-' . $fa_icon;
 					?>
                 <!-- Start Post -->
-                <div class="blog-post image-post">
-						<?php if( has_post_thumbnail() ):?>
-                    <?php
-                     // Thumb
-                     $large_image_url = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'blog-posts' );
-                     // var_dump( $large_image_url );
-                     ?>
-                    <!-- Post Thumb -->
-                    <div class="post-head">
-                        <a class="lightbox" title="<?php the_title();?>" href="<?php echo $large_image_url[0];?>">
-                            <div class="thumb-overlay"><i class="fa fa-arrows-alt"></i></div>
-                            <img alt="" src="<?php echo $large_image_url[0];?>">
-                        </a>
-                    </div>
-                 <?php endif;?>
-                 <!-- Post Content -->
-                 <div class="post-content">
-                     <div class="post-type">
-                     <i class="fa <?php echo $fa_icon;?>"></i></div>
-                     <h2><a href="<?php the_permalink();?>"><?php the_title();?></a></h2>
-                     <ul class="post-meta">
-                         <li><?php _e( 'By' , 'the-margo' );?> <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><?php the_author();?></a></li>
-                         <li><?php echo get_the_date();?></li>
-                         <li><?php echo $category_link;?></li>
-                         <li><a href="#"><?php echo $comment_string;?></a></li>
-                     </ul>
-                     <p><?php the_excerpt();?></p>
-                     <a class="main-button" href="<?php the_permalink();?>"><?php _e( 'Read More' , 'the-margo' );?> <i class="fa fa-angle-right"></i></a>
-                 </div>
+                <h4 class="classic-title"><span><?php the_title();?></span></h4>
+                <div class="page-content">
+                	<?php the_content();?>
                 </div>
                 <!-- End Post -->    
                     <?php
@@ -88,6 +63,6 @@
             <!--Sidebar-->
             <div class="col-md-3 sidebar right-sidebar">
                 <!-- Search Widget -->
-                <?php dynamic_sidebar( 'right-sidebar' ); ?>
+                <?php dynamic_sidebar( $the_margo_right_sidebar ); ?>
             </div>
             <!--End sidebar-->
